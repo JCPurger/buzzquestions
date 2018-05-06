@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="">Inscrever-se</a>
+                    <a class="nav-link js-scroll-trigger" href="{{ route('register') }}">Inscrever-se</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="{{ route('login') }}">Login</a>

@@ -38,7 +38,8 @@
                         <label>
                             Nome<span class="req">*</span>
                         </label>
-                        <input id="name" type="text" class="{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autocomplete="off"/>
+                        <input id="name" type="text" class="{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"
+                               value="{{ old('name') }}" required autocomplete="off"/>
                     </div>
 
                     <div class="field-wrap">
@@ -53,21 +54,25 @@
                     <label>
                         Email<span class="req">*</span>
                     </label>
-                    <input id="email" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" required autocomplete="off"/>
+                    <input id="email" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                           required autocomplete="off"/>
                 </div>
 
                 <div class="field-wrap">
                     <label>
                         Senha<span class="req">*</span>
                     </label>
-                    <input id="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required autocomplete="off"/>
+                    <input id="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                           name="password" required autocomplete="off"/>
                 </div>
 
                 <div class="field-wrap">
                     <label>
                         Comfirmar Senha<span class="req">*</span>
                     </label>
-                    <input id="password_confirmation" type="password" class="{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" required autocomplete="off"/>
+                    <input id="password_confirmation" type="password"
+                           class="{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}"
+                           name="password_confirmation" required autocomplete="off"/>
                 </div>
 
                 <button type="submit" class="button button-block"/>
@@ -86,14 +91,16 @@
                     <label>
                         Email<span class="req">*</span>
                     </label>
-                    <input id="email" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" required autocomplete="off"/>
+                    <input id="email" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                           required autocomplete="off"/>
                 </div>
 
                 <div class="field-wrap">
                     <label>
                         Senha<span class="req">*</span>
                     </label>
-                    <input id="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required autocomplete="off"/>
+                    <input id="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                           name="password" required autocomplete="off"/>
                 </div>
 
                 <p class="forgot"><a href="#">Esqueceu a senha?</a></p>

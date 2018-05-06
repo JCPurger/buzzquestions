@@ -15,10 +15,16 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/{url}', function () {
+    return view('login');
+})->where(['url' => 'login|register']);
+
 Auth::routes();
 
-Route::get('/{page}',function ($page){
+Route::get('/{page}',function ($page) {
     return view($page);
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/questionnaire','QuestionnaireController');
+
+//Route::get('/home', 'HomeController@index')->name('home');
