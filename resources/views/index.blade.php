@@ -2,7 +2,7 @@
 @section('title', 'Bem-Vindo')
 
 @section('content')
-    <header class="bg-warning">
+    <header class="bg-warning container-fluid">
         <div class="container text-center">
             <h1>Tenhas respostas para todas as suas </br>perguntas!</h1></br>
             <p class="lead">Crie, compartilhe e analise todo tipo de questionário.</p>

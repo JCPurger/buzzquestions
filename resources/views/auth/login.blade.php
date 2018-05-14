@@ -17,7 +17,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body class="tema">
 
 <div class="form">
 
@@ -35,43 +35,44 @@
 
                 <div class="top-row">
                     <div class="field-wrap">
-                        <label>
+                        <label class="tema">
                             Nome<span class="req">*</span>
                         </label>
-                        <input id="name" type="text" class="{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"
+                        <input id="name" type="text" class="tema {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"
                                value="{{ old('name') }}" required autocomplete="off"/>
                     </div>
 
                     <div class="field-wrap">
-                        <label>
+                        <label class="tema">
                             Sobrenome<span class="req">*</span>
                         </label>
-                        <input type="text" required autocomplete="off"/>
+                        <input type="text" class="tema {{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname"
+                               value="{{ old('lastname') }}" required autocomplete="off"/>
                     </div>
                 </div>
 
                 <div class="field-wrap">
-                    <label>
+                    <label class="tema">
                         Email<span class="req">*</span>
                     </label>
-                    <input id="email" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                    <input id="email" type="email" class="tema {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                            required autocomplete="off"/>
                 </div>
 
                 <div class="field-wrap">
-                    <label>
+                    <label class="tema">
                         Senha<span class="req">*</span>
                     </label>
-                    <input id="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                    <input id="password" type="password" class="tema {{ $errors->has('password') ? ' is-invalid' : '' }}"
                            name="password" required autocomplete="off"/>
                 </div>
 
                 <div class="field-wrap">
-                    <label>
+                    <label class="tema">
                         Comfirmar Senha<span class="req">*</span>
                     </label>
                     <input id="password_confirmation" type="password"
-                           class="{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}"
+                           class="tema {{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}"
                            name="password_confirmation" required autocomplete="off"/>
                 </div>
 
@@ -88,18 +89,18 @@
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="field-wrap">
-                    <label>
+                    <label class="tema">
                         Email<span class="req">*</span>
                     </label>
-                    <input id="email" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                    <input id="email" type="email" class="tema {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                            required autocomplete="off"/>
                 </div>
 
                 <div class="field-wrap">
-                    <label>
+                    <label class="tema">
                         Senha<span class="req">*</span>
                     </label>
-                    <input id="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                    <input id="password" type="password" class="tema {{ $errors->has('password') ? ' is-invalid' : '' }}"
                            name="password" required autocomplete="off"/>
                 </div>
 

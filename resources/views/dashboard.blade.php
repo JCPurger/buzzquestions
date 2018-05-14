@@ -19,7 +19,7 @@
 
 <body>
 
-<h1>DASHBOARD PAG</h1>
+@extends('components.list-questionnaire')
 
 
 </body>

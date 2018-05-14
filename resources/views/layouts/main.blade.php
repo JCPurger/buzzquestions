@@ -17,42 +17,18 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
-<body id="page-top">
+<body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top " id="mainNav">
-    <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="{{ url('/') }}"><img src="{{ asset('img/bzq.svg') }}"
-                                                                             style="width: 170px"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{ route('register') }}">Inscrever-se</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{ route('login') }}">Login</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+@include('partials.navbar')
 
 @yield('content')
 
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; BuzzQuestions 2018</p>
-    </div>
-    <!-- /.container -->
-</footer>
+@include('partials.footer')
 
 
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/jquery.form.min.js') }}"></script>
+@yield('scripts')
 
 {{--<!-- Plugin JavaScript -->--}}
 {{--<script src="vendor/jquery-easing/jquery.easing.min.js"></script>--}}
