@@ -16,6 +16,7 @@ class CreateQuestionnaireTable extends Migration
         Schema::create('questionnaire', function (Blueprint $table) {
             $table->increments('id');
             $table->string('category');
+            $table->boolean('complete');
             $table->timestamps();
         });
     }

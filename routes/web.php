@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('index');
 });
@@ -19,12 +21,21 @@ Route::get('/{url}', function () {
     return view('login');
 })->where(['url' => 'login|register']);
 
-Auth::routes();
 
-Route::get('/{page}',function ($page) {
-    return view($page);
+Route::resource('question', 'QuestionController');
+Route::resource('questionnaire', 'QuestionnaireController');
+
+//TODO: COLOCAR ESSE MIDDLEWARE AO FINAL DO DESENVOLVIMENTO
+//Route::group(['middleware' => ['auth']], function () {
+//    Route::resource('question', 'QuestionController');
+//    Route::resource('questionnaire', 'QuestionnaireController');
+//});
+
+
+Route::get('/{page}', function ($page) {
+    if (view()->exists('temp.'.$page)) {
+        return view('temp.'.$page);
+    } else {
+        return back();
+    }
 });
-
-Route::resource('/questionnaire','QuestionnaireController');
-
-//Route::get('/home', 'HomeController@index')->name('home');
