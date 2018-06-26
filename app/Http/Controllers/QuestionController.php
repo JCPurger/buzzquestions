@@ -64,7 +64,7 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd($id);
     }
 
     /**
