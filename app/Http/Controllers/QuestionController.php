@@ -25,11 +25,7 @@ class QuestionController extends Controller
      */
     public function create(Request $request)
     {
-        //TODO: GET VIEW E RETORNA PARA O JQUERY FAZER O APPEND
-
-
         $template = view('components.questions.'.$request->tipo)->render();
-
         return response()->json($template,200);
     }
 

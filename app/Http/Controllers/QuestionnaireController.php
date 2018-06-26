@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Questionnaire;
 use Auth;
+use App\Questionnaire;
+use Illuminate\Http\Request;
 
 class QuestionnaireController extends Controller
 {
@@ -15,9 +15,8 @@ class QuestionnaireController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $questionnaire = Questionnaire::where($user->id);
-        return response()->json($questionnaire);
+        $questionnaires = Auth::user()->questionnaires->where('complete',true);
+        return view('dashboard',['questionnaires' => $questionnaires]);
     }
 
     /**
@@ -31,6 +30,7 @@ class QuestionnaireController extends Controller
             $questionnaire = new Questionnaire();
             $questionnaire->category = 1;
             $questionnaire->complete = false;
+            $questionnaire->user_id = Auth::user()->id;
             $questionnaire->save();
             session(['form_id' => $questionnaire->id]);
         }
@@ -50,7 +50,7 @@ class QuestionnaireController extends Controller
 
         $request->session()->forget('form_id');
 
-        return view('temp.dashboard');
+        return redirect('dashboard');
     }
 
     /**

@@ -21,21 +21,21 @@ Route::get('/{url}', function () {
     return view('login');
 })->where(['url' => 'login|register']);
 
-
-Route::resource('question', 'QuestionController');
-Route::resource('questionnaire', 'QuestionnaireController');
+//Route::get('dashboard','QuestionnaireController@index');
+//Route::resource('questionnaire', 'QuestionnaireController');
+//Route::resource('question', 'QuestionController');
 
 //TODO: COLOCAR ESSE MIDDLEWARE AO FINAL DO DESENVOLVIMENTO
-//Route::group(['middleware' => ['auth']], function () {
-//    Route::resource('question', 'QuestionController');
-//    Route::resource('questionnaire', 'QuestionnaireController');
-//});
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('dashboard','QuestionnaireController@index');
+    Route::resource('question', 'QuestionController');
+    Route::resource('questionnaire', 'QuestionnaireController');
+});
 
 
 Route::get('/{page}', function ($page) {
-    if (view()->exists('temp.'.$page)) {
+    if (view()->exists('temp.'.$page))
         return view('temp.'.$page);
-    } else {
+    else
         return back();
-    }
 });

@@ -11,7 +11,15 @@
             <ul class="navbar-nav ml-auto">
                 @if(Auth::check())
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Sair</a>
+                        {{--<a class="nav-link js-scroll-trigger" href="/logout">Sair</a>--}}
+                        <a class="nav-link js-scroll-trigger" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Sair
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
                 @else
                     <li class="nav-item">

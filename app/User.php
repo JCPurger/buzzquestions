@@ -29,6 +29,6 @@ class User extends Authenticatable
 
     public function questionnaires()
     {
-        return $this->hasMany('App\Questionnaire');
+        return $this->hasMany('App\Questionnaire','','');
     }
 }

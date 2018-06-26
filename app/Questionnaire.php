@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Questionnaire extends Model
 {
@@ -20,5 +21,10 @@ class Questionnaire extends Model
     public function questions()
     {
         return $this->hasMany('App\Question','questionnaire_id','id');
+    }
+
+    public function getCreatedAtAttribute($date)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d-m-Y H:i:s');
     }
 }

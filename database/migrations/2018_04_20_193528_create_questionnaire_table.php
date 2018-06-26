@@ -17,6 +17,9 @@ class CreateQuestionnaireTable extends Migration
             $table->increments('id');
             $table->string('category');
             $table->boolean('complete');
+            $table->unsignedInteger('user_id');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +31,9 @@ class CreateQuestionnaireTable extends Migration
      */
     public function down()
     {
+        Schema::table('questionnaire', function (Blueprint $table) {
+            $table->dropForeign('user_id');
+        });
         Schema::dropIfExists('questionnaire');
     }
 }

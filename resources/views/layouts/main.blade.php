@@ -26,15 +26,15 @@
 @include('partials.footer')
 
 
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="{{ asset('js/jquery.form.min.js') }}"></script>
-@yield('scripts')
 
 {{--<!-- Plugin JavaScript -->--}}
 {{--<script src="vendor/jquery-easing/jquery.easing.min.js"></script>--}}
-
 {{--<!-- Custom JavaScript for this theme -->--}}
 {{--<script src="js/scrolling-nav.js"></script>--}}
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/jquery.form.min.js') }}"></script>
+<script src='{{ asset('js/Chart.min.js') }}'></script>
+@yield('scripts')
 
 </body>
 
