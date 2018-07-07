@@ -21,15 +21,11 @@ Route::get('/{url}', function () {
     return view('login');
 })->where(['url' => 'login|register']);
 
-//Route::get('dashboard','QuestionnaireController@index');
-//Route::resource('questionnaire', 'QuestionnaireController');
-//Route::resource('question', 'QuestionController');
-
-//TODO: COLOCAR ESSE MIDDLEWARE AO FINAL DO DESENVOLVIMENTO
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('dashboard','QuestionnaireController@index');
-    Route::resource('question', 'QuestionController');
-    Route::resource('questionnaire', 'QuestionnaireController');
+    Route::get('/dashboard','QuestionnaireController@index')->name('dashboard');
+    Route::get('/monitor/{id}','MonitorarController@show')->name('monitor');
+    Route::resource('/question', 'QuestionController');
+    Route::resource('/questionnaire', 'QuestionnaireController');
 });
 
 
