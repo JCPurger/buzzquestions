@@ -277,8 +277,98 @@ div.card-border {
     padding: 20px;
 }
 
+
 .card-char {
     padding-top: 15px;
     padding-bottom: 15px;
+}
+
+
+/* enviar questionário */
+.form-enviar{
+    margin-left: 10%;
+    width: 1000px;
+}
+.env_mens{
+    border-collapse: collapse;
+    padding-top: 30px; 
+    padding-bottom: 30px;
+}
+.table-mens{
+    width: 600;
+    background-color: white; 
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.td-mens{
+    border-collapse: collapse; 
+    padding: 0px;
+    text-align: center; 
+    width: 600px;
+}
+.table-td-mens{
+    border-collapse: collapse; 
+    border-spacing: 0; 
+    box-sizing: border-box; 
+    min-height: 40px;
+    position: relative; 
+    width: 100%;
+}
+.table-td-table{
+    border-collapse: collapse; 
+    font-family: Segoe Print; 
+    padding: 10px 15px; 
+    background: #fff;
+    border-spacing: 0;
+}
+.a-span{
+    display: inline-block; 
+    text-decoration:none; 
+    box-sizing: border-box; 
+    font-family: Segoe Print;
+    width: 100%; 
+    text-align: center; 
+    color:rgb(102,102,102); 
+    font-size: 16px; 
+    cursor: text;
+    font-weight: normal;
+}
+.mens-body{
+    font-family: Segoe Print;
+    font-size: 15px; 
+    font-weight: normal; 
+    line-height: 170%; 
+    text-align: left; 
+    color: #666; 
+    word-wrap: break-word;
+}
+.span-mens{
+    text-align: center;
+    display: inline-block;
+}
+.span-mens-span{
+    line-height: 0;
+    display: none;
+}
+.table-bot{
+    border-collapse: collapse; 
+    border-spacing: 0; 
+    background-color: orange; 
+    border-radius: 10px; 
+    color: rgb(255,255,255); 
+    display: inline-block;
+    font-family: Segoe Print; 
+    font-size: 15px; 
+    font-weight: bold; 
+    text-align: center;
+}
+.td-bot{
+    border-collapse: collapse; 
+    display: inline-block; 
+    padding: 15px 20px;
+}
+.imag{
+    height: auto; 
+    width: 30px;
 }
 

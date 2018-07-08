@@ -77,10 +77,8 @@
                 @csrf
 
                 <div class="field-wrap">
-                    <label>
-                        Email<span class="req">*</span>
-                    </label>
-                    <input id="email" type="email" name="email" required autocomplete="off"/>
+                    
+                    <input id="email" type="email" name="email" placeholder="exemplo'@'email.com" required autocomplete="off"/>
                 </div>
 
                 <div class="field-wrap">
