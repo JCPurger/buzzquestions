@@ -313,6 +313,7 @@ div.card-border {
     min-height: 40px;
     position: relative; 
     width: 100%;
+    text-align: center;
 }
 .table-td-table{
     border-collapse: collapse; 
@@ -349,6 +350,7 @@ div.card-border {
 .span-mens-span{
     line-height: 0;
     display: none;
+    
 }
 .table-bot{
     border-collapse: collapse; 
