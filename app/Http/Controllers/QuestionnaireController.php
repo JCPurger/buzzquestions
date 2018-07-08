@@ -73,6 +73,8 @@ class QuestionnaireController extends Controller
      */
     public function edit($id)
     {
+        $questionnaire = Questionnaire::find($id);
+        dd($questionnaire->questions);
         return view('questionario');
     }
 
@@ -96,8 +98,9 @@ class QuestionnaireController extends Controller
      */
     public function destroy($id)
     {
-            $res = Questionnaire::find($id)->delete();
-            $msg = $res ? 'Foi excluído com sucesso !' : 'Houve um erro ao excluir !';
-            return back()->with('menssagem',$msg);
+        $res = Questionnaire::find($id)->delete();
+        $msg = $res ? 'Foi excluído com sucesso !' : 'Houve um erro ao excluir !';
+        return back()->with('menssagem',$msg);
     }
+
 }

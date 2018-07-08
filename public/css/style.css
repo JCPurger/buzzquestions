@@ -21,7 +21,7 @@ section {
 }
 
 /*.btn {*/
-    /*margin-top: 5%;*/
+/*margin-top: 5%;*/
 /*}*/
 
 .btn-quest {
@@ -64,7 +64,7 @@ body {
 }
 
 body.tema {
-    background:rgba(19, 35, 47, 0.9);
+    background: rgba(19, 35, 47, 0.9);
 }
 
 #quest {
@@ -262,19 +262,23 @@ textarea.tema {
     text-align: right;
 }
 
-/*TODO: remover esse row e colocar uma classe para o que está utilizando esse estilo*/
 /*.row {*/
-    /*width: 50%;*/
-    /*margin-left: 2%;*/
-    /*margin-top: 0%;*/
+/*width: 50%;*/
+/*margin-left: 2%;*/
+/*margin-top: 0%;*/
 /*}*/
 
-.centered {
+#graphics-session {
     padding: 30px;
 }
 
-.centered .card-border{
-    border: 1px solid rgba(0,0,0,.3);
+div.card-border {
+    border: 1px solid rgba(0, 0, 0, .3);
     padding: 20px;
+}
+
+.card-char {
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 

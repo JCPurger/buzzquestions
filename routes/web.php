@@ -13,9 +13,7 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::view('/','index');
 
 Route::get('/{url}', function () {
     return view('login');
@@ -24,14 +22,15 @@ Route::get('/{url}', function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard','QuestionnaireController@index')->name('dashboard');
     Route::get('/monitor/{id}','MonitorarController@show')->name('monitor');
+    Route::get('/question/submit/{id}', 'SubmitController@create')->name('submit.create');
+    Route::put('/question/submit/{id}', 'SubmitController@store')->name('submit.store');
+
     Route::resource('/question', 'QuestionController');
     Route::resource('/questionnaire', 'QuestionnaireController');
 });
 
 
 Route::get('/{page}', function ($page) {
-    if (view()->exists('temp.'.$page))
-        return view('temp.'.$page);
-    else
-        return back();
+    $name = 'temp.'.$page;
+    return view()->exists($name) ? view($name) : back();
 });

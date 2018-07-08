@@ -35,7 +35,7 @@
                             <a href="{{ route('monitor',$questionnaire->id) }}" class="btn btn-outline-success"> Monitorar</a>
                         </td>
                         <td class="text-right">
-                            <a href="{{ route('questionnaire.show',$questionnaire->id) }}" class="btn btn-outline-primary"> Enviar</a>
+                            <a href="{{ route('submit.create',$questionnaire->id) }}" class="btn btn-outline-primary"> Enviar</a>
                         </td>
                         <td class="text-right">
                             <button class="btn btn-outline-danger quest-delete" type="submit" data-toggle="modal" data-target="#remove-modal"> Remover</button>

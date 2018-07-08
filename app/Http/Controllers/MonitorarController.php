@@ -11,7 +11,6 @@ class MonitorarController extends Controller
     public function show($id)
     {
         $questionnaire = Questionnaire::find($id);
-        dd($questionnaire->questions()->get());
-        return view('monitorar');
+        return view('monitorar',['questions' => $questionnaire->questions()->get()]);
     }
 }
