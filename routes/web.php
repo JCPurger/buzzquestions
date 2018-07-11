@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::view('/','index');
+Route::view('/','index')->middleware('guest');
 
 Route::get('/{url}', function () {
     return view('login');
