@@ -15,8 +15,8 @@ class QuestionnaireController extends Controller
      */
     public function index()
     {
-        $questionnaires = Auth::user()->questionnaires->where('complete',true);
-        return view('dashboard',['questionnaires' => $questionnaires]);
+        $questionnaires = Auth::user()->questionnaires->where('complete', true);
+        return view('dashboard', ['questionnaires' => $questionnaires]);
     }
 
     /**
@@ -74,8 +74,26 @@ class QuestionnaireController extends Controller
     public function edit($id)
     {
         $questionnaire = Questionnaire::find($id);
-        dd($questionnaire->questions);
-        return view('questionario');
+        $questions_template = "";
+        foreach ($questionnaire->questions as $question) {
+//            $view = 'components.questions.edit.'.$question->type;
+//            $questions_template .= view($view,$question)->render();
+            switch ($question->type) {
+                case 1:
+                    $questions_template .= view('components.questions.edit.multiple', compact('question'))->render();
+                    break;
+                case 2:
+                    $questions_template .= view('components.questions.edit.comment', compact('question'))->render();
+                    break;
+                case 3:
+                    $questions_template .= view('components.questions.edit.select', compact('question'))->render();
+                    break;
+                default:
+                    $questions_template .= "<p>erro ao gerar as perguntas</p>";
+                    break;
+            }
+        }
+        return view('questionario', ['questions_template' => $questions_template]);
     }
 
     /**
@@ -100,7 +118,7 @@ class QuestionnaireController extends Controller
     {
         $res = Questionnaire::find($id)->delete();
         $msg = $res ? 'Foi excluído com sucesso !' : 'Houve um erro ao excluir !';
-        return back()->with('menssagem',$msg);
+        return back()->with('menssagem', $msg);
     }
 
 }

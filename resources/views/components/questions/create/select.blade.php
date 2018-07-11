@@ -3,7 +3,8 @@
         <form class="form-group-q question-form" method="POST" action="{{ route('question.store') }}">
             {{--<h3> Pergunta Tipo 3</h3>--}}
             <input type="hidden" name="type" value="3">
-            <input class="form-control" type="text" name="wording" placeholder="Digite sua pergunta" required>
+            <input class="form-control" type="text" name="wording" placeholder="Digite sua pergunta" value="{{ old('wording') }}" required>
+
 
             <div class="form-control-q">
                 <input type="checkbox" name="checkChoice[]" value="checkbox1" disabled>

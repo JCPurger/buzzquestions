@@ -16,5 +16,8 @@ class Question extends Model
         'type','wording','questionnaire_id'
     ];
 
-
+    public function values()
+    {
+        return $this->hasMany('App\Question_value','question_id');
+    }
 }

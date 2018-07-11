@@ -18,7 +18,7 @@
 
             <div class="form_quest">
                 <div class="col-xs-10" id="questoes-lista">
-
+                    {!! @$questions_template !!}
                     {{--ENTRA AS DIV DAS PERGUNTAS QUE SERÁ MONTADO VIA AJAX--}}
 
                     <form method="POST" action="{{ route('questionnaire.store') }}">
@@ -52,18 +52,12 @@
                 data: {tipo: tipo},
                 dataType: 'json'
             }).done(function (data, textStatus, jqXHR) {
-                // because dataType is json 'data' is guaranteed to be an object
                 $('#concluir').parent('form').before(data);
                 $('#concluir').prop('disabled', false);
-
             }).fail(function (jqXHR, textStatus, errorThrown) {
-                // the response is not guaranteed to be json
                 if (jqXHR.responseJSON) {
-                    // jqXHR.reseponseJSON is an object
                     console.log('failed with json data');
-                }
-                else {
-                    // jqXHR.responseText is not JSON data
+                }else {
                     console.log('failed with unknown data');
                 }
             });
@@ -75,16 +69,12 @@
             $current_form = $(this);
 
             $current_form.ajaxSubmit({
-                // Se enviado com sucesso
                 success: function (resposta) {
-                    // Exibindo resposta do servidor
-                    // console.log(resposta);
                     $current_form.find('input').prop('disabled', true);
                     $current_form.find('button').remove();
                 },
-                // Se acontecer algum erro
-                error: function () {
-                    console.log("DEU RUIM !");
+                error: function (jqXHR) {
+                    alert(jqXHR.responseJSON.message);
                 }
             });
         });

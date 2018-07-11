@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Question;
 use App\Questionnaire;
+use App\Question_value;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -25,8 +27,8 @@ class QuestionController extends Controller
      */
     public function create(Request $request)
     {
-        $template = view('components.questions.'.$request->tipo)->render();
-        return response()->json($template,200);
+        $template = view('components.questions.create.' . $request->tipo)->render();
+        return response()->json($template, 200);
     }
 
     /**
@@ -37,10 +39,22 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $question = new Question(['type' => $request->type,'wording' => $request->wording]);
+        DB::beginTransaction();
 
-        $questionnaire = Questionnaire::find(session('form_id'));
-        $questionnaire->questions()->save($question);
+        try {
+            $questionnaire = Questionnaire::find(session('form_id'));
+            $question = new Question(['type' => $request->type, 'wording' => $request->wording]);
+            $questionnaire->questions()->save($question);
+            if ($request->choice) {
+                foreach ($request->choice as $choice) {
+                    $question->values()->save(new Question_value(['content' => $choice]));
+                }
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['message' => 'Erro ao salvar a questão, verifique antes de salvar.'], 422);
+        }
 
         return response()->json($request, 200);
     }
@@ -76,7 +90,15 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $question = Question::find($id);
+        $question->update($request->all());
+        $question->values()->delete();
+        if ($request->choice) {
+            foreach ($request->choice as $choice) {
+                $question->values()->save(new Question_value(['content' => $choice]));
+            }
+        }
+
     }
 
     /**
