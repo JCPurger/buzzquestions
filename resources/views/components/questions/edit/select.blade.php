@@ -2,7 +2,7 @@
     <div class="col-md-10">
         <form class="form-group-q question-form" method="POST" action="{{ route('question.update',$question->id) }}">
             <h3>Resposta multipla</h3>
-            <input type="hidden" name="type" value="3">
+            <input type="hidden" name="type" value="select">
             <input type="hidden" name="id" value="{{ $question->id }}">
 
             <div class="form-group">

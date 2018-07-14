@@ -1,7 +1,7 @@
 <div class="col-md-10">
     <form class="form-group-q question-form" method="POST" action="{{ route('question.store') }}">
         {{--<h3> Pergunta Tipo 1</h3>--}}
-        <input type="hidden" name="type" value="1">
+        <input type="hidden" name="type" value="multiple">
 
         <input class="form-control" type="text" name="wording" placeholder="Digite sua pergunta" value="{{ old('wording')}}" required>
 

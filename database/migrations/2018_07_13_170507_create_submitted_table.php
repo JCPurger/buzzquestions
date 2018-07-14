@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionTable extends Migration
+class CreateSubmittedTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateQuestionTable extends Migration
      */
     public function up()
     {
-        Schema::create('question', function (Blueprint $table) {
+        Schema::create('submitted', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
-            $table->string('wording');
+            $table->string('token',64); //TOKEN DE SEGURANCA
             $table->unsignedInteger('questionnaire_id');
 
-            $table->foreign('questionnaire_id')->references('id')->on('questionnaire')->onDelete('cascade');
+            $table->foreign('questionnaire_id')->references('id')->on('question')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,9 +30,9 @@ class CreateQuestionTable extends Migration
      */
     public function down()
     {
-        Schema::table('question', function (Blueprint $table) {
-            $table->dropForeign('question_questionnaire_id_foreign');
+        Schema::table('submitted', function (Blueprint $table) {
+            $table->dropForeign('submitted_questionnaire_id_foreign');
         });
-        Schema::dropIfExists('question');
+        Schema::dropIfExists('submitted');
     }
 }

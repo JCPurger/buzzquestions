@@ -6,7 +6,15 @@
 <header class="container-fluid">
   <div class="card">
 
-    <form action="/" method="post">
+    @if (session('message'))
+      <div class="alert alert-danger">
+        {{ session('message') }}
+      </div>
+    @endif
+
+    <form action="{{ route('submit.store',$id) }}" method="post">
+      @csrf
+      @method('PUT')
       <h3>Compartilhe seu questionário!</h3>
       <div class="col-sm-10">
         <div class="row send">
@@ -30,7 +38,7 @@
             <label>Assunto:</label>
             <div class="row">
               <div class="col-md-4 offset-md-2">
-                <input type="text" class="form-control form-enviar" name="email" id="email" placeholder="Queremos ouvir sua opinião">
+                <input type="text" class="form-control form-enviar" name="subject" id="email" placeholder="Queremos ouvir sua opinião">
               </div>
             </div>
           </div>

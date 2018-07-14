@@ -26,7 +26,8 @@ class QuestionnaireController extends Controller
      */
     public function create()
     {
-        if (session('form_id') == null) {
+        //INSERE CHAVE EM SESSION PARA EVITAR INSERÇÃO EXCESSIVA NO BD
+        if (session('form_id') == null || Questionnaire::findOrFail(session('form_id'))->complete == 1) {
             $questionnaire = new Questionnaire();
             $questionnaire->category = 1;
             $questionnaire->complete = false;
@@ -46,8 +47,8 @@ class QuestionnaireController extends Controller
      */
     public function store(Request $request)
     {
+        //SALVA NO BD ALTERANDO O STATUS PARA COMPLETO E REMOVE CHAVE DA SESSION
         Questionnaire::find(session('form_id'))->update(['complete' => true]);
-
         $request->session()->forget('form_id');
 
         return redirect('dashboard');
@@ -61,8 +62,7 @@ class QuestionnaireController extends Controller
      */
     public function show($id)
     {
-//        $questionnaire = Questionnaire::find($id);
-//        return view('questionario-editar',['questionario' => $questionnaire]);
+        //
     }
 
     /**
@@ -73,26 +73,14 @@ class QuestionnaireController extends Controller
      */
     public function edit($id)
     {
-        $questionnaire = Questionnaire::find($id);
+        $questionnaire = Questionnaire::findOrFail($id);
+        session(['form_id' => $questionnaire->id]); //CHAVE DE SESSION PARA EDITAR
         $questions_template = "";
         foreach ($questionnaire->questions as $question) {
-//            $view = 'components.questions.edit.'.$question->type;
-//            $questions_template .= view($view,$question)->render();
-            switch ($question->type) {
-                case 1:
-                    $questions_template .= view('components.questions.edit.multiple', compact('question'))->render();
-                    break;
-                case 2:
-                    $questions_template .= view('components.questions.edit.comment', compact('question'))->render();
-                    break;
-                case 3:
-                    $questions_template .= view('components.questions.edit.select', compact('question'))->render();
-                    break;
-                default:
-                    $questions_template .= "<p>erro ao gerar as perguntas</p>";
-                    break;
-            }
+            $view = 'components.questions.edit.'.$question->type;
+            $questions_template .= view($view,compact('question'))->render();
         }
+
         return view('questionario', ['questions_template' => $questions_template]);
     }
 
@@ -105,7 +93,9 @@ class QuestionnaireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->session()->forget('form_id');
+
+        return redirect('/dashboard');
     }
 
     /**

@@ -22,13 +22,15 @@ Route::get('/{url}', function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard','QuestionnaireController@index')->name('dashboard');
     Route::get('/monitor/{id}','MonitorarController@show')->name('monitor');
-    Route::get('/question/submit/{id}', 'SubmitController@create')->name('submit.create');
-    Route::put('/question/submit/{id}', 'SubmitController@store')->name('submit.store');
 
     Route::resource('/question', 'QuestionController');
     Route::resource('/questionnaire', 'QuestionnaireController');
+    Route::get('/question/submit/{id}', 'SubmitController@create')->name('submit.create');
+    Route::put('/question/submit/{id}', 'SubmitController@store')->name('submit.store');
 });
 
+Route::get('/answer/{token}','AnswerController@create')->name('answer.create');
+Route::post('/answer/{id}','AnswerController@store')->name('answer.store');
 
 Route::get('/{page}', function ($page) {
     $name = 'temp.'.$page;

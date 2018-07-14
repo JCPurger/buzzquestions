@@ -31,7 +31,7 @@ class CreateAnswerTable extends Migration
     public function down()
     {
         Schema::table('answer', function (Blueprint $table) {
-            $table->dropForeign('question_id');
+            $table->dropForeign('answer_question_id_foreign');
         });
         Schema::dropIfExists('answer');
     }

@@ -31,7 +31,7 @@ class CreateQuestionValueTable extends Migration
     public function down()
     {
         Schema::table('question_value', function (Blueprint $table) {
-            $table->dropForeign('question_id');
+            $table->dropForeign('question_value_question_id_foreign');
         });
         Schema::dropIfExists('question_value');
     }

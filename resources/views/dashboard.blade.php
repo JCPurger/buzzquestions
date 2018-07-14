@@ -41,6 +41,32 @@
                             <button class="btn btn-outline-danger quest-delete" type="submit" data-toggle="modal" data-target="#remove-modal"> Remover</button>
                         </td>
                     </tr>
+
+
+                    <!-- Modal de remoção -->
+                    <div class="modal fade" id="remove-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Comfirme a exclusão!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Você tem certeza ABSOLUTA de que quer excluir este item ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <form action="{{ route('questionnaire.destroy',$questionnaire->id) }}" method="POST">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-danger">Comfirmar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @empty
                     <tr>Você não contêm nenhum questionário cadastrado !</tr>
                 @endforelse
@@ -48,31 +74,6 @@
             </table>
         </div>
     </header>
-
-    <!-- Modal de remoção -->
-    <div class="modal fade" id="remove-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Comfirme a exclusão!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Você tem certeza ABSOLUTA de que quer excluir este item ?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <form action="{{ route('questionnaire.destroy',$questionnaire->id) }}" method="POST">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button type="submit" class="btn btn-danger">Comfirmar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @section('scripts')

@@ -23,6 +23,11 @@ class Questionnaire extends Model
         return $this->hasMany('App\Question','questionnaire_id','id');
     }
 
+    public function submits()
+    {
+        return $this->hasMany('App\Submitted','questionnaire_id');
+    }
+
     public function getCreatedAtAttribute($date)
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d-m-Y H:i:s');

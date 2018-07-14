@@ -2,7 +2,7 @@
     <form class="form-group-q question-form" method="POST" action="{{ route('question.update',$question->id) }}">
         <h3>Resposta única</h3>
         <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="type" value="1">
+        <input type="hidden" name="type" value="multiple">
 
         <div class="form-group">
             <input class="form-control" type="text" name="wording" placeholder="Digite sua pergunta" value="{{ old('wording',@$question->wording) }}" required>
