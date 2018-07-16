@@ -15,6 +15,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <!-- Bee Icon with CDN -->
+    <link rel="shortcut icon" href="https://png.icons8.com/metro/50/000000/bee.png">
 </head>
 
 <body>
@@ -26,11 +28,6 @@
 @include('partials.footer')
 
 
-
-{{--<!-- Plugin JavaScript -->--}}
-{{--<script src="vendor/jquery-easing/jquery.easing.min.js"></script>--}}
-{{--<!-- Custom JavaScript for this theme -->--}}
-{{--<script src="js/scrolling-nav.js"></script>--}}
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/jquery.form.min.js') }}"></script>
 <script src='{{ asset('js/Chart.min.js') }}'></script>

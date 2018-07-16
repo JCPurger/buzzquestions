@@ -19,6 +19,7 @@
             <div class="form_quest">
                 <div class="col-xs-10" id="questoes-lista">
                     {!! @$questions_template !!}
+
                     {{--ENTRA AS DIV DAS PERGUNTAS QUE SERÁ MONTADO VIA AJAX--}}
 
                     <form method="POST" action="{{ route('questionnaire.store') }}">

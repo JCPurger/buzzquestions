@@ -18,4 +18,9 @@ class Question_value extends Model
     {
         return $this->belongsTo('App\Question');
     }
+
+    public function answers()
+    {
+        return $this->belongsToMany('App\Question','answer','question_value_id','question_id');
+    }
 }
