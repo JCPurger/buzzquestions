@@ -11,13 +11,14 @@
 |
 */
 
-Auth::routes();
+Auth::routes(); //PACOTE DE ROTAS PARA AUTENTICACAO
+
 Route::view('/', 'index')->middleware('guest');
 Route::get('/{url}', function () {
     return view('login');
 })->where(['url' => 'login|register']);
 
-
+//ROTAS PROTEGIDAS POR MIDDLEWARE
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'QuestionnaireController@index')->name('dashboard');
     Route::get('/monitor/{id}', 'MonitorarController@show')->name('monitor');
@@ -33,8 +34,8 @@ Route::post('/answer/{id}', 'AnswerController@store')->name('answer.store');    
 Route::put('/answer/{token}', 'AnswerController@conclude')->name('answer.conclude'); //CONCLUI FORM DE RESPOSTAS
 
 
-//TODO: remover ao final do desenvolvimento
-Route::get('/{page}', function ($page) {
-    $name = 'temp.' . $page;
-    return view()->exists($name) ? view($name) : back();
-});
+//TODO: remover ao final do desenvolvimento essas rotas de página temporária
+//Route::get('/{page}', function ($page) {
+//    $name = 'temp.' . $page;
+//    return view()->exists($name) ? view($name) : back();
+//});

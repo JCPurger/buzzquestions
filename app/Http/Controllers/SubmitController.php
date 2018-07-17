@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Submitted;
 use App\Questionnaire;
-use App\Mail\testeMail;
+use App\Mail\answerMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -19,14 +19,18 @@ class SubmitController extends Controller
 
     public function store(Request $request, $id)
     {
-        //FIXME: VER O ERRO DE COM TRANSACTION AQUI
-        $token = Password::getRepository()->createNewToken();
-        $questionnaire = Questionnaire::find($id);
-        $questionnaire->submits()->create(['token' => $token]);
+        try {
+            $token = Password::getRepository()->createNewToken();
+            $questionnaire = Questionnaire::find($id);
+            $questionnaire->submits()->create(['token' => $token]);
 
-        Mail::to($request->email)
-            ->send(new testeMail($request, $token));
+            Mail::to($request->email)
+                ->send(new answerMail($request, $token));
 
-        return back()->with('message', 'Enviado com sucesso');
+        } catch (\Exception $e) {
+            return back()->with(['message' => 'A email não pode ser enviado. Tente novamente mais tarde.','msg-type' => 'danger']);
+        }
+
+        return back()->with(['message' => 'Enviado com sucesso','msg-type' => 'success']);
     }
 }

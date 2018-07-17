@@ -17,7 +17,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        //NAO UTILIZADO ATUALMENTE
     }
 
     /**
@@ -39,6 +39,8 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+        //INICIA TRANSACAO PARA SALVAR A QUESTAO E AS ESCOLHAS
+        //CASO ACONTECA ERRO NO MEIO DO PROCESSO UM ROLLBACK É FEITO
         DB::beginTransaction();
 
         try {
@@ -67,7 +69,7 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        //NAO UTILIZADO ATUALMENTE
     }
 
     /**
@@ -78,7 +80,7 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        dd($id);
+        //NAO UTILIZADO ATUALMENTE
     }
 
     /**
@@ -90,6 +92,7 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //BUSCA A QUESTAO E INSERE OS NOVOS VALORES
         $question = Question::find($id);
         $question->update($request->all());
         $question->values()->delete();
@@ -98,7 +101,6 @@ class QuestionController extends Controller
                 $question->values()->save(new Question_value(['content' => $choice]));
             }
         }
-
     }
 
     /**
