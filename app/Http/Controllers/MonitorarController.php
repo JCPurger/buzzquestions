@@ -11,6 +11,7 @@ class MonitorarController extends Controller
 {
     public function show($id)
     {
+        $btnGerar = true;
         $questionnaire = Questionnaire::find($id);
         $questions = $questionnaire->questions->where('type', '<>', 'comment');
 
@@ -29,6 +30,6 @@ class MonitorarController extends Controller
         //JSON COM OS DADOS DE RESPOSTAS MONTADO
         $questionsJson = json_encode($questionsJson);
 
-        return view('monitorar', compact('questionnaire', 'questions', 'questionsJson'));
+        return view('monitorar', compact('questionnaire', 'questions', 'questionsJson','btnGerar'));
     }
 }

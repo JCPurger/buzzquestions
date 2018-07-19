@@ -33,6 +33,9 @@ Route::get('/answer/{token}', 'AnswerController@create')->name('answer.create');
 Route::post('/answer/{id}', 'AnswerController@store')->name('answer.store');      //INSERE RESPOSTA NO BANCO
 Route::put('/answer/{token}', 'AnswerController@conclude')->name('answer.conclude'); //CONCLUI FORM DE RESPOSTAS
 
+//ROTA P/ GERAR
+Route::get('/report/{id}','ReportController@generate')->name('report');
+
 
 //TODO: remover ao final do desenvolvimento essas rotas de página temporária
 //Route::get('/{page}', function ($page) {

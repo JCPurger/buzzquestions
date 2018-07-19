@@ -3,16 +3,19 @@
 
 @section('content')
     <header class="container-fluid">
+        @if(isset($btnGerar))
+        <a href="{{ route('report',$questionnaire->id) }}" class="btn btn-warning">Gerar pdf</a>
+        @endif
         <div id="graphics-session" class="row justify-content-md-center">
-            @foreach($questions as $key => $question)
-                <div class="col-md-6 card-char">
-                    <div class="col-md-12 card-border">
-                        <h2>{{ $key + 1 }}º</h2>
-                        <h4>Pergunta: {{ $question->wording }}</h4>
-                        <canvas class="chart" data-tipo="bar" width="80" height="50"></canvas>
-                    </div>
+        @foreach($questions as $key => $question)
+            <div class="col-md-6 card-char">
+                <div class="col-md-12 card-border">
+                    <h2>{{ $key + 1 }}º</h2>
+                    <h4>Pergunta: {{ $question->wording }}</h4>
+                    <canvas class="chart" data-tipo="bar" width="80" height="50"></canvas>
                 </div>
-            @endforeach
+            </div>
+        @endforeach
         </div>
     </header>
 @endsection
@@ -40,6 +43,9 @@
                                 beginAtZero: true
                             }
                         }]
+                    },
+                    animation: {
+                        duration: 0
                     }
                 }
             });
